@@ -1,0 +1,11 @@
+:root {
+    --black-1: #111111;
+    --black-2: #000000;
+
+    --white: #FFFFFF;
+    --grey: #F2F2F2;
+
+    --violet: rgb(76, 55, 238);
+    --violet-80: rgba(76, 55, 238, .8);
+    --turquoise: #23FFCA;
+}
