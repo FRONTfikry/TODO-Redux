@@ -3,13 +3,11 @@
 }
 
 .input, .btn {
-    padding: 8px 16px;
-
-    outline: none;
-    border: none;
-
     background: var(--turquoise);
 
+    outline: none;
+    
+    border: none;
     border-radius: 10px;
 
     font-style: normal;
@@ -19,6 +17,7 @@
 
     color: var(--violet);
 
+    padding: 8px 16px;
 }
 
 .input {

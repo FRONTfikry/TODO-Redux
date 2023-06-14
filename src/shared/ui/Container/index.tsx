@@ -9,7 +9,7 @@ interface Props {
 export const Container: React.FC<Props> = ({children, className}) => {
     return (
         // ? need trim() here?
-        <div className={`${styles.container} ${className}`}>
+        <div className={`${styles.container} ${className ? className.trim() : ""}`}>
             {children}
         </div>
     )

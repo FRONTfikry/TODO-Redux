@@ -1,11 +1,11 @@
-import './index.css'
-
 import { withProviders } from './providers'
 
 import { Header } from 'widgets/Header'
 import { TasksList } from 'widgets/TasksList'
 
-function App() {
+import './index.css'
+
+export const App: React.FC = () => {
   return (
     <>
       <Header />

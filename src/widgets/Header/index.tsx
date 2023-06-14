@@ -1,8 +1,9 @@
-import { Container } from "shared/ui/Container"
-
 import { AddTaskForm } from "features/AddTaskForm"
 
+import { Container } from "shared/ui/Container"
+
 import styles from './style.module.css'
+
 
 export const Header: React.FC = () => {
     return (

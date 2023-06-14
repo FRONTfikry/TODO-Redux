@@ -1,14 +1,13 @@
 import { useAppSelector } from "shared/lib/store-hooks"
 
-import { Container } from "shared/ui/Container"
-
 import { Task } from "entities/task/ui"
+
+import { Container } from "shared/ui/Container"
 
 import styles from './styles.module.css'
 
 
 export const TasksList: React.FC = () => {
-
     const tasks = useAppSelector((state) => state.tasks.data)
 
     return (

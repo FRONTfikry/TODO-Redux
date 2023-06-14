@@ -1,23 +1,26 @@
 import { FormEvent, useRef } from 'react'
 
-import { useAppDispatch, useAppSelector } from 'shared/lib/store-hooks'
+import { useAppDispatch } from 'shared/lib/store-hooks'
 import { addTask } from 'entities/task/model'
+
+import { FormInput } from 'shared/ui/FormInput'
+import { FormButton } from 'shared/ui/FormButton'
 
 import styles from './styles.module.css'
 
 import plusImg from 'shared/assets/images/Vector.svg'
 
-export const AddTaskForm = () => {
+
+export const AddTaskForm: React.FC = () => {
+    const inputRef = useRef<HTMLInputElement>(null)
 
     const dispatch = useAppDispatch()
-
-    const inputRef = useRef<HTMLInputElement>(null)
 
     function submitHandler(event: FormEvent) {
         event.preventDefault()
 
-        if (inputRef.current != null) {
-            dispatch(addTask(inputRef.current.value.trim()))
+        if (inputRef.current) {
+            dispatch(addTask({text: inputRef.current.value.trim()}))
 
             inputRef.current.value = ''
         }
@@ -25,11 +28,11 @@ export const AddTaskForm = () => {
 
     return (
         <form className={styles.form} onSubmit={submitHandler}>
-            <input ref={inputRef} type="text" className={styles.input} placeholder="Enter task..."/>
-            <button type='submit' className={styles.btn}>
+            <FormInput ref={inputRef} type="text" className={styles.input} placeholder="Enter task..."/>
+            <FormButton type='submit' className={styles.btn}>
                 <img src={plusImg} className={styles.img} />
                 Create new task
-            </button>
+            </FormButton>
         </form>
     )
 }
