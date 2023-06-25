@@ -1,12 +1,12 @@
 import { FormEvent, useRef } from "react"
 
-import { useAppDispatch } from "shared/lib/store-hooks"
-import { editTask } from "entities/task/model"
+import { useEditTaskMutation } from "entities/task/api";
 
 import { FormInput } from "shared/ui/FormInput";
 import { FormButton } from "shared/ui/FormButton";
 
 import styles from './styles.module.css'
+
 
 
 interface Props {
@@ -18,13 +18,13 @@ interface Props {
 export const EditTaskForm: React.FC<Props> = ({id, setOpened}) => {
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const dispatch = useAppDispatch()
+    const [editTask] = useEditTaskMutation()
 
     function submitHandler(event: FormEvent) {
         event.preventDefault()
 
         if(inputRef.current) {
-            dispatch(editTask({id: id, text: inputRef.current.value}))
+            editTask({id: id, text: inputRef.current.value})
 
             setOpened(false)
         }

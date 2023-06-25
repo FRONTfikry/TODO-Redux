@@ -1,7 +1,6 @@
 import { FormEvent, useRef } from 'react'
 
-import { useAppDispatch } from 'shared/lib/store-hooks'
-import { addTask } from 'entities/task/model'
+import { useAddTaskMutation } from 'entities/task/api'
 
 import { FormInput } from 'shared/ui/FormInput'
 import { FormButton } from 'shared/ui/FormButton'
@@ -11,16 +10,17 @@ import styles from './styles.module.css'
 import plusImg from 'shared/assets/images/Vector.svg'
 
 
+
 export const AddTaskForm: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null)
-
-    const dispatch = useAppDispatch()
+    
+    const [addTask] = useAddTaskMutation()
 
     function submitHandler(event: FormEvent) {
         event.preventDefault()
 
         if (inputRef.current) {
-            dispatch(addTask({text: inputRef.current.value.trim()}))
+            addTask({text: inputRef.current.value.trim()})
 
             inputRef.current.value = ''
         }

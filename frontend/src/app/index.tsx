@@ -5,7 +5,7 @@ import { TasksList } from 'widgets/TasksList'
 
 import './index.css'
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <>
       <Header />

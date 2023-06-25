@@ -1,9 +1,9 @@
-import { useAppDispatch } from "shared/lib/store-hooks";
-import { checkTask } from "entities/task/model";
+import { useToggleTaskMutation } from "entities/task/api";
 
 import styles from './styles.module.css'
 
 import checkImg from 'shared/assets/images/Vector-3.svg'
+
 
 
 interface Props {
@@ -13,10 +13,10 @@ interface Props {
 
 
 export const TaskCheckbox = ({id, completed}: Props) => {
-    const dispatch = useAppDispatch()
+    const [toggleTask] = useToggleTaskMutation()
 
     function checkHandler() {
-        dispatch(checkTask({id: id}))
+        toggleTask({id})
     }
 
     return (

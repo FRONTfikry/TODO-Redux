@@ -1,5 +1,4 @@
-import { useAppSelector } from "shared/lib/store-hooks"
-
+import { useGetTasksQuery } from "entities/task/api"
 import { Task } from "entities/task/ui"
 
 import { Container } from "shared/ui/Container"
@@ -7,8 +6,10 @@ import { Container } from "shared/ui/Container"
 import styles from './styles.module.css'
 
 
+
 export const TasksList: React.FC = () => {
-    const tasks = useAppSelector((state) => state.tasks.data)
+
+    const {data = []} = useGetTasksQuery()
 
     return (
         <div className={styles.tasks}>
@@ -17,12 +18,10 @@ export const TasksList: React.FC = () => {
 
                 <div className={styles.list}>
                     {   
-                        tasks.length
-                        ? tasks.map(task => <Task text={task.text} id={task.id} completed={task.completed} key={task.id}/>)
+                        data
+                        ? data.map(task => <Task text={task.text} id={task.id} completed={task.completed} key={task.id}/>)
                         : <p className="tasks__p">No tasks anymore</p>
                     }
-
-                    
                 </div>
             </Container>
         </div>

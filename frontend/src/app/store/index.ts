@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
 
-import taskReducer from 'entities/task/model'
+import { tasksApi } from "entities/task/api"
 
 
 export const store = configureStore({
     reducer: {
-        tasks: taskReducer,
-    }
+        [tasksApi.reducerPath]: tasksApi.reducer
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tasksApi.middleware)
 })
 
 

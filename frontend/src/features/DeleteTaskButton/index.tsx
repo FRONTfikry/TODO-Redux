@@ -1,9 +1,9 @@
-import { useAppDispatch } from 'shared/lib/store-hooks'
-import { deleteTask } from 'entities/task/model'
+import { useDeleteTaskMutation } from 'entities/task/api'
 
 import { TaskButton } from 'shared/ui/TaskButton'
 
 import deleteImg from 'shared/assets/images/Vector-2.svg'
+
 
 
 interface Props {
@@ -12,10 +12,11 @@ interface Props {
 
 
 export const DeleteTaskButton: React.FC<Props> = ({id}) => {
-    const dispatch = useAppDispatch()
+
+    const [deleteTask] = useDeleteTaskMutation()
 
     function clickHandler() {
-        dispatch(deleteTask({id: id}))
+        deleteTask({id})
     }
 
     return (
